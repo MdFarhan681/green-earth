@@ -142,7 +142,7 @@ let totalPrice = 0;
 const showCart = (nam, price, id) => {
   const numPrice = parseInt(price);
 
-  alert(" farhan");
+  alert(`${nam} has been added to the cart.`);
 
   const cartCon = document.getElementById("cartCont");
   const divCart = document.createElement("div");
