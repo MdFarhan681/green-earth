@@ -1,6 +1,5 @@
 //All catagories fetch
 const loadLesson = () => {
-   
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
     .then((json) => displayLesson(json.categories));
@@ -15,7 +14,7 @@ const removeAct = () => {
 
 // single Catagory fetch
 const loadBtnCard = (id) => {
-   manageSpin(true);
+  manageSpin(true);
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((json) => {
@@ -23,7 +22,6 @@ const loadBtnCard = (id) => {
       const clickBtn = document.getElementById(`cataBtn-${id}`);
 
       clickBtn.classList.add("active");
-     
 
       displayCard(json.plants);
     }); //call same card show fn
@@ -57,7 +55,6 @@ const loadCart = (id) => {
 
 // All catagory button html making
 const displayLesson = (lessons) => {
-   
   const catagoryCont = document.getElementById("catagoryCont");
   catagoryCont.innerHTML = "";
   for (let lesson of lessons) {
@@ -65,12 +62,11 @@ const displayLesson = (lessons) => {
 
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-        <button id="cataBtn-${lesson.id}" onclick="loadBtnCard(${lesson.id})"  class="btn btn-ghost cataBtnCls w-full md:justify-start  hover:bg-[#15803D] hover:text-white">${lesson.category_name}</button>
+        <button id="cataBtn-${lesson.id}" onclick="loadBtnCard(${lesson.id})"  class="btn btn-ghost cataBtnCls border-green-300 md:border-0 w-full justify-start md:justify-start  hover:bg-[#15803D] hover:text-white">${lesson.category_name}</button>
         
         `;
     catagoryCont.append(btnDiv);
   }
- 
 };
 
 //single card content fetch
@@ -82,7 +78,6 @@ const loadLessonAll = () => {
 
 //  card html making
 const displayCard = (lessons) => {
-    
   const catagoryCont = document.getElementById("CardCont");
   catagoryCont.innerHTML = "";
   for (let lesson of lessons) {
@@ -93,7 +88,7 @@ const displayCard = (lessons) => {
                   <img
                     src=${lesson.image}
                     alt="Shoes"
-                    class="rounded-xl p-0 w-full h-[180px]" />
+                    class="rounded-xl p-0 w-full h-[200px]" />
                 </figure>
 
                 <div class="card-body p-3">
@@ -124,7 +119,7 @@ const displayCard = (lessons) => {
         `;
     catagoryCont.append(btnDiv);
   }
-    manageSpin(false);
+  manageSpin(false);
 };
 
 //modal making html
@@ -148,8 +143,8 @@ const showCart = (nam, price, id) => {
   const divCart = document.createElement("div");
   divCart.innerHTML = `
 
-     <div  class=" singleCart   h-full px-3 py-1 ">
-                        <div class="card w-full bg-base-100 card-xs shadow-sm">
+     <div  class=" singleCart   h-full px-3 py-1  ">
+                        <div class="card w-full  bg-[#f5fff9] card-xs shadow-sm">
                               <div class="card-body flex flex-row  justify-between items-center  p-2  ">
 
                                     <div class="leftBody">
@@ -161,7 +156,7 @@ const showCart = (nam, price, id) => {
                         
 
                                         <div class=" card-actions">
-                                        <i class=" cross fa-solid fa-xmark text-gray-500"></i>
+                                        <i class="cursor-pointer p-3 cross fa-solid fa-xmark text-gray-500"></i>
                                         </div>
                               </div>
                         </div>
@@ -178,7 +173,7 @@ const showCart = (nam, price, id) => {
          `;
 
   cartCon.append(divCart);
- total(numPrice);
+  total(numPrice);
   //remove icon
   const closeBtn = divCart.querySelector(".cross");
   closeBtn.addEventListener("click", () => {
@@ -186,16 +181,11 @@ const showCart = (nam, price, id) => {
 
     // console.log(numPrice,totalPrice);
 
-    totalPrice-=numPrice;
+    totalPrice -= numPrice;
     const priceGet = document.getElementById("total");
     priceGet.innerText = "Total: ৳" + totalPrice;
     priceGet.style.display = totalPrice > 0 ? "block" : "none";
-    
-
-
   });
-
- 
 
   function total(numPrice) {
     totalPrice = totalPrice + numPrice;
@@ -210,15 +200,13 @@ const showCart = (nam, price, id) => {
 };
 
 function manageSpin(state) {
-    if(state==true){
-        document.getElementById("spin").classList.remove("hidden");
-        document.getElementById("CardCont").classList.add("hidden");
-
-    }else{
-        document.getElementById("CardCont").classList.remove("hidden");
-        document.getElementById("spin").classList.add("hidden");
-    }
-
+  if (state == true) {
+    document.getElementById("spin").classList.remove("hidden");
+    document.getElementById("CardCont").classList.add("hidden");
+  } else {
+    document.getElementById("CardCont").classList.remove("hidden");
+    document.getElementById("spin").classList.add("hidden");
+  }
 }
 
 loadLesson(); //catagory btn
