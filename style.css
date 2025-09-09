@@ -1,0 +1,24 @@
+*{
+      font-family: "Inter", sans-serif;
+      
+      
+}
+.text-color{
+     /* color: #d9fde9  */
+     color: #1F2937;
+
+}
+.head-text{
+    color: #15803D;
+}
+
+.btn-color{
+    background-color: #FACC15;
+}
+
+.active{
+    /* hover:bg-[#15803D] hover:text-white */
+
+    background-color:#15803D;
+     color: white;
+}
