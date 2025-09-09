@@ -40,7 +40,7 @@ const loadModalCard = (id) => {
         json.plants.description
       );
 
-      // showCart(json.plants.name,json.plants.price);
+      
     });
 };
 
